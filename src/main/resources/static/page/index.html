@@ -23,7 +23,7 @@
 			<ul class="header-bar">
 				<li class="header-bar-role"><a href="javascript:;">用户名</a></li>
 				<li class="header-bar-nav">
-					<a href="javascript:;">qiqi<i class="icon-font" style="margin-left:5px;">&#xe60c;</i></a>
+					<a href="javascript:;" id="username"><i class="icon-font" style="margin-left:5px;">&#xe60c;</i></a>
 					<ul class="header-dropdown-menu">
 						<li><a href="login.html">退出</a></li>
 					</ul>
@@ -66,5 +66,10 @@
 	<script type="text/javascript" src="../common/lib/jquery-1.9.0.min.js"></script>
 	<script type="text/javascript" src="../common/js/sccl.js"></script>
 	<script type="text/javascript" src="../common/js/sccl-util.js"></script>
+	<script type="text/javascript" src="../common/js/jquery.cookie.js"></script>
+	<script>
+		var username = $.cookie("username");
+		$("#username").text(username);
+	</script>
   </body>
 </html>

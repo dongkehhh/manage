@@ -11,7 +11,7 @@ import java.util.List;
 public class ClassformController {
     @Autowired
     ClassformService classformService;
-    @RequestMapping("list")
+    @RequestMapping("page/list")
     public List selectList(String teachername){
         return classformService.selectList(teachername);
     }
