@@ -8,17 +8,17 @@
 	<meta name="description" content="scclui为轻量级的网站后台管理系统模版。">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
-	  <link rel="stylesheet" type="text/css" href="../common/css/style.css" />
-	  <script src="../common/js/jquery.js"></script>
-	  <script type="text/javascript" src="../common/js/jquery.cookie.js"></script>
-    <title>jec后台管理系统</title>
-    
+	<link rel="stylesheet" type="text/css" href="../common/css/style.css" />
+	<script src="../common/js/jquery.js"></script>
+	<script type="text/javascript" src="../common/js/jquery.cookie.js"></script>
+	<title>jec后台管理系统</title>
   </head>
   <body>
 	<table class="table">
 		<tr>
 			<th>班级列表</th>
 		</tr>
+
 	</table>
   </body>
   <script>
@@ -27,10 +27,11 @@
 		var username = $.cookie("username");
 		$.get(
 		    "list",
-			{"username":username},
+			{"teachername":username},
 			function (list) {
 				for (var i=0;i<list.length;i++){
-				    console.log(list[i])
+				    url='<tr>'+'<td>'+'<a>'+'+list[0]+'+'</a>'+'</td>'+'</tr>'
+				    $(".table").append(url);
 				}
             }
 		);
