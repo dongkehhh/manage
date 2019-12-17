@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/select")
+@RequestMapping("page/select")
 public class StudentController {
     @Autowired
     StudentService studentService;
@@ -31,8 +31,11 @@ public class StudentController {
     }
     @RequestMapping("/student")
     public List<Student> selectStudent(Integer page, Integer limit,String name){
-        System.out.println(page);
         PageHelper.startPage(page,limit);
         return studentService.selectStudent(name);
+    }
+    @RequestMapping("/classId")
+    public List<Student> selectClassId(String classId){
+        return studentService.selectClassId(classId);
     }
 }

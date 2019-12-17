@@ -23,16 +23,16 @@
   </body>
   <script>
       $(document).ready(function () {
-          alert(1)
 		var username = $.cookie("username");
 		$.get(
 		    "list",
 			{"teachername":username},
 			function (list) {
 				for (var i=0;i<list.length;i++){
-				    url='<tr>'+'<td>'+'<a>'+'+list[0]+'+'</a>'+'</td>'+'</tr>'
+				    w="classbook.html?teachername="+list[i];
+				    url='<tr><td>'+'<a href="'+w+'">'+list[i]+'</a></td></tr>';
 				    $(".table").append(url);
-				}
+                }
             }
 		);
     });

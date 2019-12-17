@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface StudentMapper {
+    List<Student>  selectClassId(@Param("classId") String classId);
+
     List<Student> selectStudent(@Param("name") String name);
 
     int updateLearn(int learntime,int id);

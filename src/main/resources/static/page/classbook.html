@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="keywords" content="scclui框架">
+    <meta name="description" content="scclui为轻量级的网站后台管理系统模版。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="../common/css/style.css" />
+    <script src="../common/js/jquery.js"></script>
+    <script type="text/javascript" src="../common/js/jquery.cookie.js"></script>
+    <title>jec后台管理系统</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>名字</th>
+            <th>当前课时</th>
+            <th>班级</th>
+            <th>所属教师</th>
+            <th>入学时间</th>
+            <th>操作</th>
+        </tr>
+    </table>
+    <script>
+        $(function () {
+            var search = window.location.search;
+            var split = search.split("=");
+            var split2 = split[split.length-1];
+            $.post(
+                "select/classId",
+                {"classId":split2},
+                function (list) {
+                    for (i=0;i<list.length;i++){
+                        var s=list[i];
+                        console.log(s);
+                        url= '<tr><td>'+s.id+'</td>'+'<td>'+s.name+'</td>'+'<td>'+s.learntime+'</td>'+'<td>'+s.classid+'</td>'+'<td>'+s.teachername+'</td>'+'<td>'+s.opendate+'</td>'+'<td>减少课时</td></tr>'
+                        $(".table").append(url);
+                    }
+                }
+            )
+        })
+    </script>
+</body>
+</html>

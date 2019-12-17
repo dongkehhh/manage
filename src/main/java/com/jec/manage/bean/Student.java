@@ -10,7 +10,19 @@ public class Student implements Serializable {
 
     private Integer learntime;
 
-    private String classid;
+    public Integer getLearntime() {
+        return learntime;
+    }
+
+    public void setLearntime(Integer learntime) {
+        this.learntime = learntime;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    private String classId;
 
     private String teachername;
 
@@ -34,20 +46,14 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public Integer getLearntime() {
-        return learntime;
-    }
 
-    public void setLearntime(Integer learntime) {
-        this.learntime = learntime;
-    }
 
     public String getClassid() {
-        return classid;
+        return classId;
     }
 
     public void setClassid(String classid) {
-        this.classid = classid;
+        this.classId = classid;
     }
 
     public String getTeachername() {
@@ -75,7 +81,7 @@ public class Student implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
         sb.append(", learntime=").append(learntime);
-        sb.append(", classid=").append(classid);
+        sb.append(", classid=").append(classId);
         sb.append(", teachername=").append(teachername);
         sb.append(", opendate=").append(opendate);
         sb.append("]");

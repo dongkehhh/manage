@@ -15,6 +15,12 @@ public class StudentServiceImpl implements StudentService{
     StudentMapper StudentMapper;
 
     @Override
+    public List<Student> selectClassId(String classId) {
+        List<Student> students = StudentMapper.selectClassId(classId);
+        return students;
+    }
+
+    @Override
     public List<Student> selectStudent(String name) {
         return StudentMapper.selectStudent(name);
     }

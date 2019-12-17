@@ -76,6 +76,9 @@
       and name = #{name}
     </if>
   </select>
+  <select id="selectClassId" resultMap="BaseResultMap">
+    SELECT * FROM student WHERE classId=#{classId}
+  </select>
   <select id="selectBook" resultMap="BaseResultMap">
     SELECT * FROM student
     where classId = #{classId}
