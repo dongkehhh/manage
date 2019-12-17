@@ -79,6 +79,9 @@
   <select id="selectClassId" resultMap="BaseResultMap">
     SELECT * FROM student WHERE classId=#{classId}
   </select>
+  <select id="selectId" resultType="com.jec.manage.bean.Student">
+    SELECT * FROM student WHERE id=#{id}
+  </select>
   <select id="selectBook" resultMap="BaseResultMap">
     SELECT * FROM student
     where classId = #{classId}
@@ -240,5 +243,26 @@
       teachername = #{teachername,jdbcType=VARCHAR},
       opendate = #{opendate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateStudentTime" parameterType="com.jec.manage.bean.Student">
+    update student
+    <set>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="learntime != null">
+        learntime = #{learntime},
+      </if>
+      <if test="classid != null">
+        classId = #{classid},
+      </if>
+      <if test="teachername != null">
+        teachername = #{teachername},
+      </if>
+      <if test="opendate != null">
+        opendate = #{opendate},
+      </if>
+    </set>
+    where id = #{id}
   </update>
 </mapper>

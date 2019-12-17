@@ -36,8 +36,8 @@
                 function (list) {
                     for (i=0;i<list.length;i++){
                         var s=list[i];
-                        console.log(s);
-                        url= '<tr><td>'+s.id+'</td>'+'<td>'+s.name+'</td>'+'<td>'+s.learntime+'</td>'+'<td>'+s.classid+'</td>'+'<td>'+s.teachername+'</td>'+'<td>'+s.opendate+'</td>'+'<td>减少课时</td></tr>'
+                        m="learnBook.html?id="+s.id;
+                        url= '<tr><td>'+s.id+'</td>'+'<td>'+s.name+'</td>'+'<td>'+s.learntime+'</td>'+'<td>'+s.classid+'</td>'+'<td>'+s.teachername+'</td>'+'<td>'+s.opendate+'</td>'+'<td>'+'<a href="'+m+'">减少课时</a>'+'</td></tr>'
                         $(".table").append(url);
                     }
                 }

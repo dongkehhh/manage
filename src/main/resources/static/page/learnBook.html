@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="keywords" content="scclui框架">
+    <meta name="description" content="scclui为轻量级的网站后台管理系统模版。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="../common/css/style.css" />
+    <script src="../common/js/jquery.js"></script>
+    <script type="text/javascript" src="../common/js/jquery.cookie.js"></script>
+    <title>jec后台管理系统</title>
+</head>
+<body>
+    修改课时 : <input id="m" type="text" placeholder="请输入整数">
+    <br>
+    <button id="w">提交</button>
+    <script>
+        $("#w").click(function () {
+            var val = $("#m").val();
+            var search = window.location.search;
+            var split = search.split("=");
+            var split2 = split[split.length - 1];
+            $.post(
+                "select/id",
+                {"id":split2},
+                function (student) {
+                    var learntimemax = student.learntime;
+                    var classId = student.classid;
+                   var learntime= learntimemax-val ;
+                    $.post(
+                        "select/learn",
+                        {"learntime":learntime,"id":split2},
+                        function (int) {
+                            if (int==1){
+                                alert("修改成功")
+                                location.href="classbook.html?classid="+classId;
+                            }else {
+                                alert("修改失败,请联系管理员")
+                                location.href="classbook.html?classid="+classId;
+                            }
+                        }
+                    )
+                }
+            )
+        })
+    </script>
+</body>
+</html>

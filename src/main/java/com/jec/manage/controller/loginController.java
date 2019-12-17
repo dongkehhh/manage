@@ -20,6 +20,7 @@ public class loginController {
    @RequestMapping("page/login")
    @ResponseBody
     public Map selectLogin(@Param("username")String username, @Param("password") String password ){
+       System.out.println("username=============================="+username);
        HashMap<String, String> map = new HashMap<>();
        Admin admin = adminService.selectLogin(username);
         if (admin==null){

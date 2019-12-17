@@ -31,10 +31,24 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
+    public Student selectId(int id) {
+        return StudentMapper.selectId(id);
+    }
+
+    @Override
     public List<Student> selectBook(String classId) {
         List<String> list = new ArrayList<>();
         System.out.println(classId);
         List<Student> students = StudentMapper.selectBook(classId);
         return students;
+    }
+
+    @Override
+    public int updateStudentTime(Integer id, Integer learntime) {
+        Student student = new Student();
+        student.setId(id);
+        student.setLearntime(learntime);
+        int i = StudentMapper.updateStudentTime(student);
+        return i;
     }
 }

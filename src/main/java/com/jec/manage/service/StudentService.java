@@ -8,6 +8,7 @@ public interface StudentService {
     List<Student>  selectClassId(String classId);
     List<Student> selectStudent(String name);
     int updateLearn(int learntime,int id);
-
+    Student  selectId(int id);
     List<Student> selectBook(String classId);
+    int updateStudentTime(Integer id,Integer learntime);
 }

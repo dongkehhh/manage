@@ -21,13 +21,10 @@ public class StudentController {
         return strings;
     }
     @RequestMapping("/learn")
-    public String updateLearn(@Param("learntime") int learntime,@Param("id") int id) {
+    public int updateLearn(@Param("learntime") int learntime,@Param("id") int id) {
         int i = studentService.updateLearn(learntime, id);
-        if (i==1){
-        return "修改成功";
-        }else {
-        return "出现未知错误,请联系管理员";
-        }
+        return i;
+
     }
     @RequestMapping("/student")
     public List<Student> selectStudent(Integer page, Integer limit,String name){
@@ -37,5 +34,10 @@ public class StudentController {
     @RequestMapping("/classId")
     public List<Student> selectClassId(String classId){
         return studentService.selectClassId(classId);
+    }
+
+    @RequestMapping("/id")
+    public Student selectId(int id){
+        return studentService.selectId(id);
     }
 }
