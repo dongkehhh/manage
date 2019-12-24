@@ -15,6 +15,11 @@ public class StudentServiceImpl implements StudentService{
     StudentMapper StudentMapper;
 
     @Override
+    public int deleteStudentId(Integer id) {
+        return StudentMapper.deleteStudentId(id);
+    }
+
+    @Override
     public List<Student> selectClassId(String classId) {
         List<Student> students = StudentMapper.selectClassId(classId);
         return students;

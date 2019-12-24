@@ -17,6 +17,12 @@ public class loginController {
     @Autowired
     AdminService adminService;
 
+   /* @RequestMapping("/tologin")
+    public String toLogin(){
+        return "login.html";        //转发
+    }*/
+
+
    @RequestMapping("page/login")
    @ResponseBody
     public Map selectLogin(@Param("username")String username, @Param("password") String password ){

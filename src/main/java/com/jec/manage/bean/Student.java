@@ -1,5 +1,7 @@
 package com.jec.manage.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -26,6 +28,7 @@ public class Student implements Serializable {
 
     private String teachername;
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone="GMT+8")
     private Date opendate;
 
     private static final long serialVersionUID = 1L;

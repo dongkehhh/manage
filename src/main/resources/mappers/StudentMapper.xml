@@ -109,6 +109,9 @@
     from student
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <delete id="deleteStudentId" parameterType="java.lang.Integer">
+     delete from student where id = #{id}
+  </delete>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from student
     where id = #{id,jdbcType=INTEGER}

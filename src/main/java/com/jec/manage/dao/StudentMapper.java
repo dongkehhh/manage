@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface StudentMapper {
+    int deleteStudentId(Integer id);
+
     Student  selectId(@Param("id") int id);
 
     int updateStudentTime(Student student);
