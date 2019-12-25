@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("page/select")
+@RequestMapping("select")
 public class StudentController {
     @Autowired
     StudentService studentService;

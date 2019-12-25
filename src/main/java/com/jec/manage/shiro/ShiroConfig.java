@@ -25,6 +25,17 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
+        shiroFilterFactoryBean.setLoginUrl("/login");
+        shiroFilterFactoryBean.setSuccessUrl("/index");
+        LinkedHashMap<String, String> filterMap = new LinkedHashMap<>();
+        filterMap.put("/common/**","anon");
+        filterMap.put("/login.html","anon");
+        filterMap.put("/**.html", "authc");
+        filterMap.put("/login","anon");
+        filterMap.put("/tologin","anon");
+        filterMap.put("/logout","logout");//配置退出 过滤器,其中的具体的退出代码Shiro已经实现
+        filterMap.put("/**","authc");//过滤链定义，从上向下顺序执行，一般将/**放在最为下边
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         return shiroFilterFactoryBean;
     }
 

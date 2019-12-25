@@ -4,15 +4,15 @@
 <meta charset="utf-8"/>
 <title>后台登录</title>
 <meta name="author" content="DeathGhost" />
-<link rel="stylesheet" type="text/css" href="../common/css/style.css" />
+<link rel="stylesheet" type="text/css" href="common/css/style.css" />
 <style>
 body{height:100%;background:#26a88e;overflow:hidden;}
 canvas{z-index:-1;position:absolute;}
 </style>
-<script src="../common/js/jquery.js"></script>
-<script src="../common/js/verificationNumbers.js"></script>
-<script src="../common/js/Particleground.js"></script>
- <script type="text/javascript" src="../common/js/jquery.cookie.js"></script>
+<script src="common/js/jquery.js"></script>
+<script src="common/js/verificationNumbers.js"></script>
+<script src="common/js/Particleground.js"></script>
+ <script type="text/javascript" src="common/js/jquery.cookie.js"></script>
 <script>
 $(document).ready(function() {
   //粒子背景特效
@@ -25,7 +25,7 @@ $(document).ready(function() {
   $(".submit_btn").click(function(){
       var username=$("#username").val();
       var password=$("#password").val();
-      var page="login"
+      var page="tologin"
       $.post(
           page,
           {"username":username,"password":password},

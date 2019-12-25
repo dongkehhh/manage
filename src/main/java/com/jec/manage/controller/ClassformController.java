@@ -12,7 +12,7 @@ import java.util.List;
 public class ClassformController {
     @Autowired
     ClassformService classformService;
-    @RequestMapping("page/list")
+    @RequestMapping("list")
     public List selectList(@Param("teachername") String teachername){
         return classformService.selectList(teachername);
     }
