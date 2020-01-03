@@ -42,7 +42,7 @@
 		<!-- <table schema=""   tableName="t_activity_log" domainObjectName="ActivityLog"></table>
         <table schema=""    tableName="sys_`tree" domainObjectName="SysTree"></table> -->
 
-		<table schema=""    tableName="admin" ></table>
+		<table schema=""    tableName="role" ></table>
 		<!--<table schema=""    tableName="classform" ></table>
 		<table schema=""    tableName="student" ></table>
 		<table schema=""    tableName="teacherbook" ></table>-->
