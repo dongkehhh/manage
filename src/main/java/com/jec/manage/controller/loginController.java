@@ -27,6 +27,18 @@ public class loginController {
         return "login";
     }
 
+    @RequestMapping("/hour")
+    @ResponseBody
+    public String toHour(){
+        return "hour.html";
+    }
+
+    @RequestMapping("/pupil")
+    @ResponseBody
+    public String toPupil(){
+        System.out.println("输出一次");
+        return "pupil.html";
+    }
 
    @RequestMapping("/tologin")
    @ResponseBody

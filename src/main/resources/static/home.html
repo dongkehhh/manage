@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en" xmlns:http="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
   <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
@@ -14,6 +15,8 @@
   </head>
   
   <body>
+  <shiro:hasRole th:name="admin">切换地位</shiro:hasRole>
+  <a>微电机</a>
 
   </body>
 </html>

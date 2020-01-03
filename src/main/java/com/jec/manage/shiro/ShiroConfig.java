@@ -53,4 +53,12 @@ public class ShiroConfig {
         CustonRealm custonRealm = new CustonRealm();
         return custonRealm;
     }
+   /* *//**
+     * 用于thymeleaf模板使用shiro标签
+     * @return
+     *//*
+    @Bean
+    public ShiroDialect shiroDialect() {
+        return new ShiroDialect();
+    }*/
 }

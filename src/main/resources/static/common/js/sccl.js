@@ -1,3 +1,4 @@
+
 /*左侧菜单点击*/
 $(".side-menu").on('click', 'li a', function(e) {
 	var animationSpeed = 300;
@@ -191,6 +192,18 @@ function rightBtnFun() {
 		}
 	}
 }
+function oaui(type) {
+	$.get(
+		type,
+		{},
+		function (String) {
+			alert(String)
+			$('.body-iframe').attr('src',String);
+			// Window.location.href=String;
+        }
+	)
+
+}
 
 /*选项卡切换方法*/
 function navChange() {
@@ -282,7 +295,7 @@ function initMenu(menu,parent){
 			}else{
 				item.icon == "" ? item.icon = "&#xe610" : item.icon = item.icon;
 				if(item.childMenus == ""){
-					str = "<li><a href='"+item.url+"'><i class='icon-font'>"+item.icon+"</i><span>"+item.name+"</span></a></li>";
+					str = "<li><a type='"+item.url+"' href='#' onclick='oaui(this.type)'><i class='icon-font'>"+item.icon+"</i><span>"+item.name+"</span></a></li>";
 					$(parent).append(str);
 				}else{
 					str = "<li><a href='"+item.url+"'><i class='icon-font '>"+item.icon+"</i><span>"+item.name+"</span><i class='icon-font icon-right'>&#xe60b;</i></a>";
@@ -395,11 +408,11 @@ $(function(){
 
 	/*菜单json*/
 	var menu = [{"id":"1","name":"主菜单","parentId":"0","url":"","icon":"","order":"1","isHeader":"1","childMenus":[
-					{"id":"3","name":"课时管理","parentId":"1","url":"hour.html","icon":"&#xe604;","order":"1","isHeader":"0","childMenus":[
+					{"id":"3","name":"课时管理","parentId":"1","url":"hour","icon":"&#xe604;","order":"1","isHeader":"0","childMenus":[
 					]}
 				]},
 				{"id":"1","name":"管理员功能","parentId":"0","url":"","icon":"","order":"2","isHeader":"1","childMenus":[
-					{"id":"9","name":"学员管理","parentId":"2","url":"pupil.html","icon":"","order":"1","isHeader":"0","childMenus":""},
+					{"id":"9","name":"学员管理","parentId":"2","url":"pupil","icon":"","order":"1","isHeader":"0","childMenus":""},
                     {"id":"10","name":"教师管理","parentId":"2","url":"","icon":"","order":"1","isHeader":"0","childMenus":""},
                     {"id":"10","name":"日志管理","parentId":"2","url":"","icon":"","order":"1","isHeader":"0","childMenus":""}
 				]}
