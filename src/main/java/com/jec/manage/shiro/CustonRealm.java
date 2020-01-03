@@ -37,7 +37,7 @@ public class CustonRealm extends AuthorizingRealm {
         Admin admin = adminService.selectLogin(username);
         if (admin!=null){
             SecurityUtils.getSubject().getSession().setAttribute("admin",admin);
-            AuthenticationInfo  authcInfo  = new SimpleAuthenticationInfo(admin.getUsername(),admin.getPassword(),"CustonRealm");
+            AuthenticationInfo  authcInfo  = new SimpleAuthenticationInfo(admin,admin.getPassword(),"CustonRealm");
             System.out.println("-------身份认证方法--------");
             return authcInfo;
         }else {

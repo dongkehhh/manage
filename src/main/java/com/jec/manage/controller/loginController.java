@@ -7,6 +7,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,9 +35,9 @@ public class loginController {
     }
 
     @RequestMapping("/pupil")
+    @RequiresRoles("admin")
     @ResponseBody
     public String toPupil(){
-        System.out.println("输出一次");
         return "pupil.html";
     }
 
@@ -48,7 +49,6 @@ public class loginController {
        UsernamePasswordToken token = new UsernamePasswordToken(username,password);
        try {
            subject.login(token);
-           System.out.println("token============="+token);
            //登录成功
            //跳转到test.html
 

@@ -197,9 +197,10 @@ function oaui(type) {
 		type,
 		{},
 		function (String) {
-			alert(String)
+			if(String=="403"){
+                $('.body-iframe').attr('src',"403.html");
+			}
 			$('.body-iframe').attr('src',String);
-			// Window.location.href=String;
         }
 	)
 

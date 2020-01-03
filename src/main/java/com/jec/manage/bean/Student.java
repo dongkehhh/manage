@@ -12,6 +12,16 @@ public class Student implements Serializable {
 
     private Integer learntime;
 
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    private Integer type;
+
     public Integer getLearntime() {
         return learntime;
     }
@@ -75,19 +85,5 @@ public class Student implements Serializable {
         this.opendate = opendate;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", learntime=").append(learntime);
-        sb.append(", classid=").append(classId);
-        sb.append(", teachername=").append(teachername);
-        sb.append(", opendate=").append(opendate);
-        sb.append("]");
-        return sb.toString();
-    }
+
 }

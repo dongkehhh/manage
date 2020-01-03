@@ -8,6 +8,7 @@
     <result column="classId" jdbcType="VARCHAR" property="classid" />
     <result column="teachername" jdbcType="VARCHAR" property="teachername" />
     <result column="opendate" jdbcType="DATE" property="opendate" />
+    <result column="type" jdbcType="INTEGER" property="type" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, learntime, classId, teachername, opendate
+    id, name, learntime, classId, teachername, opendate, type
   </sql>
   <select id="selectStudent" resultMap="BaseResultMap">
     SELECT * FROM student where 1=1
