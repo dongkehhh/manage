@@ -78,23 +78,27 @@
 </div>
 <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
      closed="true" buttons="#dlg-buttons">
-    <div class="ftitle">User Information</div>
+    <div class="ftitle">新增学员</div>
     <form id="fm" method="post">
         <div class="fitem">
-            <label>First Name:</label>
-            <input name="firstname" class="easyui-validatebox" required="true">
+            <label>姓名:</label>
+            <input name="name" class="easyui-validatebox" required="true">
         </div>
         <div class="fitem">
-            <label>Last Name:</label>
-            <input name="lastname" class="easyui-validatebox" required="true">
+            <label>当前课时:</label>
+            <input name="learntime" class="easyui-validatebox" required="true">
         </div>
         <div class="fitem">
-            <label>Phone:</label>
-            <input name="phone">
+            <label>所在班级:</label>
+            <input name="classid">
         </div>
         <div class="fitem">
-            <label>Email:</label>
-            <input name="email" class="easyui-validatebox" validType="email">
+            <label>所属教师:</label>
+            <input name="teachername" class="easyui-validatebox" validType="email">
+        </div>
+        <div class="fitem">
+            <label>入学时间:</label>
+            <input name="opendate" class="easyui-validatebox" validType="email">
         </div>
     </form>
 </div>
