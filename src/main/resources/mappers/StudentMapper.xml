@@ -72,20 +72,20 @@
     id, name, learntime, classId, teachername, opendate, type
   </sql>
   <select id="selectStudent" resultMap="BaseResultMap">
-    SELECT * FROM student where 1=1
+    SELECT * FROM student where 1=1 AND TYPE =0
     <if test="name != null">
       and name = #{name}
     </if>
   </select>
   <select id="selectClassId" resultMap="BaseResultMap">
-    SELECT * FROM student WHERE classId=#{classId}
+    SELECT * FROM student WHERE classId=#{classId} AND TYPE =0
   </select>
   <select id="selectId" resultType="com.jec.manage.bean.Student">
-    SELECT * FROM student WHERE id=#{id}
+    SELECT * FROM student WHERE id=#{id} AND TYPE =0
   </select>
   <select id="selectBook" resultMap="BaseResultMap">
     SELECT * FROM student
-    where classId = #{classId}
+    where classId = #{classId} AND TYPE =0
   </select>
   <update id="updateLearn" >
     UPDATE student SET learntime =#{arg0} WHERE id=#{arg1}

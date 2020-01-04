@@ -16,16 +16,46 @@
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
     <title>首页</title>
     <script>
+        var url;
         function doSearch(){
             $('#tt').datagrid('load',{
                 name: $('#itemid').val()
+            });
+        }
+        function editUser(){
+            var row = $('#tt').datagrid('getSelected');
+            if (row){
+                $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit User');
+                $('#fm').form('load',row);
+                url = 'select/id?id='+row.id;
+            }
+        }
+
+        function saveUser(){
+            $('#fm').form('submit',{
+                url: url,
+                onSubmit: function(){
+                    return $(this).form('validate');
+                },
+                success: function(result){
+                     result = eval('('+result+')');
+                    if (result.errorMsg){
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.errorMsg
+                        });
+                    } else {
+                        $('#dlg').dialog('close');
+                        $('#dg').datagrid('reload');
+                    }
+                }
             });
         }
 
         function destroyUser(){
             var row = $('#tt').datagrid('getSelected');
             if (row){
-                $.messager.confirm('Confirm','Are you sure you want to destroy this user?',function(r){
+                $.messager.confirm('Confirm','是否删除这个学员',function(r){
                     if (r){
                         $.post('select/updateid',{id:row.id},function(result){
                             if (result.success){
@@ -94,12 +124,13 @@
         </div>
         <div class="fitem">
             <label>所属教师:</label>
-            <input name="teachername" class="easyui-validatebox" validType="email">
+            <input name="teachername" class="easyui-validatebox" required="true">
         </div>
-        <div class="fitem">
+       <!-- validType="email"-->
+        <!--<div class="fitem">
             <label>入学时间:</label>
-            <input name="opendate" class="easyui-validatebox" validType="email">
-        </div>
+            <input name="opendate" class="easyui-validatebox" required="true">
+        </div>-->
     </form>
 </div>
 <div id="dlg-buttons">
