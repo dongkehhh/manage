@@ -27,8 +27,14 @@
             if (row){
                 $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit User');
                 $('#fm').form('load',row);
-                url = 'select/id?id='+row.id;
+                url = 'select/updateinfo?id='+row.id;
             }
+        }
+
+        function newUser(){
+            $('#dlg').dialog('open').dialog('setTitle','New User');
+            $('#fm').form('clear');
+            url = 'select/insertStudent';
         }
 
         function saveUser(){
@@ -38,15 +44,16 @@
                     return $(this).form('validate');
                 },
                 success: function(result){
+                    alert(result)
                      result = eval('('+result+')');
                     if (result.errorMsg){
                         $.messager.show({
                             title: 'Error',
-                            msg: result.errorMsg
+                            msg: "保存失败,请联系管理员"
                         });
                     } else {
                         $('#dlg').dialog('close');
-                        $('#dg').datagrid('reload');
+                        $('#tt').datagrid('reload');
                     }
                 }
             });
@@ -72,11 +79,6 @@
             }
         }
 
-        function newUser(){
-            $('#dlg').dialog('open').dialog('setTitle','New User');
-            $('#fm').form('clear');
-            url = 'save_user.php';
-        }
     </script>
 </head>
 
@@ -84,16 +86,16 @@
 <body>
 <table id="tt" class="easyui-datagrid" style="width:800px;height:400px"
        url="select/student"
-       title="学员信息" iconCls="icon-save"  toolbar="#toolbar" fitColumns="true"  singleSelect="true"
+       title="学员信息表" iconCls="icon-save"  toolbar="#toolbar" fitColumns="true"  singleSelect="true"
        rownumbers="true" pagination="true" pageNumber="1"  pageSize="5" pageList="[5, 10, 15]">
     <thead>
     <tr>
-        <th field="id" width="80">编号</th>
-        <th field="name" width="80">姓名</th>
-        <th field="learntime" width="80" align="right">当前课时</th>
-        <th field="classid" width="80" align="right">所在班级</th>
+        <th field="id" width="80" sortable="true">ID</th>
+        <th field="name" width="80" sortable="true">姓名</th>
+        <th field="learntime" width="80" align="right" sortable="true">当前课时</th>
+        <th field="classid" width="80" align="right" sortable="true">所在班级</th>
         <th field="teachername" width="100">所属教师</th>
-        <th field="opendate" width="260" align="center">入学时间</th>
+        <th field="opendate" width="260" align="center" sortable="true">入学时间</th>
     </tr>
     </thead>
 </table>
@@ -108,29 +110,32 @@
 </div>
 <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
      closed="true" buttons="#dlg-buttons">
-    <div class="ftitle">新增学员</div>
+    <div class="ftitle">信息表</div>
     <form id="fm" method="post">
+        <div class="fitem">
+            <button name="id" class="easyui-validatebox" />
+        </div>
         <div class="fitem">
             <label>姓名:</label>
             <input name="name" class="easyui-validatebox" required="true">
         </div>
         <div class="fitem">
             <label>当前课时:</label>
-            <input name="learntime" class="easyui-validatebox" required="true">
+            <input name="learntime" class="easyui-numberbox" required="true">
         </div>
         <div class="fitem">
             <label>所在班级:</label>
-            <input name="classid">
+            <input name="classid" class="easyui-validatebox" required="true">
         </div>
         <div class="fitem">
             <label>所属教师:</label>
             <input name="teachername" class="easyui-validatebox" required="true">
         </div>
        <!-- validType="email"-->
-        <!--<div class="fitem">
+        <div class="fitem">
             <label>入学时间:</label>
-            <input name="opendate" class="easyui-validatebox" required="true">
-        </div>-->
+            <input name="opendate" class="easyui-datebox" required="true">
+        </div>
     </form>
 </div>
 <div id="dlg-buttons">

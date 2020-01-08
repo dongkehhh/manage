@@ -6,8 +6,7 @@ import com.jec.manage.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -15,8 +14,34 @@ public class StudentServiceImpl implements StudentService{
     StudentMapper StudentMapper;
 
     @Override
-    public int deleteStudentId(Integer id) {
-        return StudentMapper.deleteStudentId(id);
+    public Map deleteStudentId(Integer id) {
+        int i = StudentMapper.deleteStudentId(id);
+        HashMap<String, Boolean> map = new HashMap<>();
+        if (i==0){
+           map.put("success",false);
+        }else {
+            map.put("success",true);
+        }
+        return map;
+    }
+
+    @Override
+    public Map updateinfo(int id,String name, int learntime, String classid, String teachername, Date opendate) {
+        Student student = new Student();
+        student.setId(id);
+        student.setName(name);
+        student.setLearntime(learntime);
+        student.setClassid(classid);
+        student.setTeachername(teachername);
+        student.setOpendate(opendate);
+        int i = StudentMapper.updateStudentTime(student);
+        HashMap<String, Boolean> map = new HashMap<>();
+        if (i==0){
+            map.put("success",false);
+        }else {
+            map.put("success",true);
+        }
+        return map;
     }
 
     @Override
@@ -37,7 +62,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public Student selectId(int id) {
-        return StudentMapper.selectId(id);
+            return StudentMapper.selectId(id);
     }
 
     @Override
@@ -54,6 +79,20 @@ public class StudentServiceImpl implements StudentService{
         student.setId(id);
         student.setLearntime(learntime);
         int i = StudentMapper.updateStudentTime(student);
+        return i;
+    }
+
+    @Override
+    public int insertSelective(String name, int learntime, String classid, String teachername,Date opendate) {
+        Student student = new Student();
+        student.setName(name);
+        student.setLearntime(learntime);
+        student.setClassid(classid);
+        student.setTeachername(teachername);
+        student.setType(0);
+        student.setOpendate(opendate);
+        System.out.println(opendate);
+        int i = StudentMapper.insertSelective(student);
         return i;
     }
 }

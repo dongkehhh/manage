@@ -76,6 +76,7 @@
     <if test="name != null">
       and name = #{name}
     </if>
+    order by opendate DESC
   </select>
   <select id="selectClassId" resultMap="BaseResultMap">
     SELECT * FROM student WHERE classId=#{classId} AND TYPE =0
@@ -152,6 +153,9 @@
       <if test="opendate != null">
         opendate,
       </if>
+      <if test="type != null">
+        type,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -171,6 +175,9 @@
       </if>
       <if test="opendate != null">
         #{opendate,jdbcType=DATE},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -265,6 +272,9 @@
       </if>
       <if test="opendate != null">
         opendate = #{opendate},
+      </if>
+      <if test="type != null">
+        type = #{type},
       </if>
     </set>
     where id = #{id}

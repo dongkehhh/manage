@@ -10,6 +10,7 @@ import org.springframework.data.relational.core.sql.In;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,8 +54,19 @@ public class StudentController {
         return studentService.selectId(id);
     }
 
+    @RequestMapping("/insertStudent")
+    public int insertSelective(int id,String name, int learntime, String classid, String teachername, Date opendate){
+       return studentService.insertSelective(name, learntime, classid, teachername,opendate);
+    }
+
+    @RequestMapping("/updateinfo")
+    public Map updateinfo(int id,String name, int learntime, String classid, String teachername, Date opendate){
+        Map updateinfo = studentService.updateinfo(id, name, learntime, classid, teachername, opendate);
+        return updateinfo;
+    }
+
     @RequestMapping("/updateid")
-    public int deleteStudentId(Integer id){
+    public Map deleteStudentId(Integer id){
         System.out.println("id==========="+id);
         return studentService.deleteStudentId(id);
     }
