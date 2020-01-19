@@ -416,7 +416,8 @@ $(function(){
 				{"id":"1","name":"管理员功能","parentId":"0","url":"","icon":"","order":"2","isHeader":"1","childMenus":[
 					{"id":"9","name":"学员管理","parentId":"2","url":"pupil","icon":"","order":"1","isHeader":"0","childMenus":""},
                     {"id":"10","name":"教师管理","parentId":"2","url":"","icon":"","order":"1","isHeader":"0","childMenus":""},
-                    {"id":"9","name":"日志管理","parentId":"2","url":"logs","icon":"","order":"1","isHeader":"0","childMenus":""}
+                    {"id":"11","name":"班级管理","parentId":"2","url":"classfrom","icon":"","order":"1","isHeader":"0","childMenus":""},
+                    {"id":"12","name":"日志管理","parentId":"2","url":"logs","icon":"","order":"1","isHeader":"0","childMenus":""}
 				]}
 				];
 

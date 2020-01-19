@@ -9,17 +9,17 @@ public class Logs implements Serializable {
     private Integer id;
 
     private String username;
-    //用户操作
-    private String operation;
-    //请求方法
-    private String method;
-    //请求参数
-    private String params;
 
-    private String ip;
+    private String operation;
+
+    private String params;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
     private Date createdtime;
+
+    private String atmtype;
+
+    private Integer typeone;
 
     private static final long serialVersionUID = 1L;
 
@@ -47,14 +47,6 @@ public class Logs implements Serializable {
         this.operation = operation;
     }
 
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
     public String getParams() {
         return params;
     }
@@ -63,20 +55,28 @@ public class Logs implements Serializable {
         this.params = params;
     }
 
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
     public Date getCreatedtime() {
         return createdtime;
     }
 
     public void setCreatedtime(Date createdtime) {
         this.createdtime = createdtime;
+    }
+
+    public String getAtmtype() {
+        return atmtype;
+    }
+
+    public void setAtmtype(String atmtype) {
+        this.atmtype = atmtype;
+    }
+
+    public Integer getTypeone() {
+        return typeone;
+    }
+
+    public void setTypeone(Integer typeone) {
+        this.typeone = typeone;
     }
 
     @Override
@@ -88,10 +88,10 @@ public class Logs implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", username=").append(username);
         sb.append(", operation=").append(operation);
-        sb.append(", method=").append(method);
         sb.append(", params=").append(params);
-        sb.append(", ip=").append(ip);
         sb.append(", createdtime=").append(createdtime);
+        sb.append(", atmtype=").append(atmtype);
+        sb.append(", typeone=").append(typeone);
         sb.append("]");
         return sb.toString();
     }

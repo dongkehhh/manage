@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface ClassformMapper {
-
+    List<Classform> selectform();
     List<Classform> selectList(@Param("teachername") String teachername);
 
 

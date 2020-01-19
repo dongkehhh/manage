@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface LogsMapper {
-    List<Logs> selectLogs(String username);
+    List<Logs> selectLogs(String name);
 
     long countByExample(LogsExample example);
 

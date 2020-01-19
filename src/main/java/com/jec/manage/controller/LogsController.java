@@ -7,19 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class LogsController {
     @Autowired
     LogsService logsService;
     @RequestMapping("insertLogs")
-    public Map insetLogs(Logs logs){
-        Map map = logsService.insertLogs(logs);
-        return  map;
+    public Integer insetLogs(Logs logs){
+        Integer integer = logsService.insertLogs(logs);
+        return  integer;
     }
     @RequestMapping("selectLogs")
-    public List<Logs> selectLogs(String username) {
-        return logsService.selectLogs(username);
+    public List<Logs> selectLogs(String name){
+        return logsService.selectLogs(name);
     }
 }

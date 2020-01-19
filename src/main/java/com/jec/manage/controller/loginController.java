@@ -34,6 +34,20 @@ public class loginController {
         return "hour.html";
     }
 
+    @RequestMapping("/classfrom")
+    @RequiresRoles("admin")
+    @ResponseBody
+    public String toclassFrom(){
+        return "classfrom.html";
+    }
+
+    @RequestMapping("/logs")
+    @RequiresRoles("admin")
+    @ResponseBody
+    public String toLogs(){
+        return "logs.html";
+    }
+
     @RequestMapping("/pupil")
     @RequiresRoles("admin")
     @ResponseBody

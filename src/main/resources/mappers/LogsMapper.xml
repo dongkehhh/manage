@@ -5,10 +5,10 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="operation" jdbcType="VARCHAR" property="operation" />
-    <result column="method" jdbcType="VARCHAR" property="method" />
     <result column="params" jdbcType="VARCHAR" property="params" />
-    <result column="ip" jdbcType="VARCHAR" property="ip" />
     <result column="createdTime" jdbcType="TIMESTAMP" property="createdtime" />
+    <result column="atmType" jdbcType="VARCHAR" property="atmtype" />
+    <result column="typeone" jdbcType="INTEGER" property="typeone" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,12 +69,12 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, operation, method, params, ip, createdTime
+    id, username, operation, params, createdTime, atmType, typeone
   </sql>
   <select id="selectLogs" resultMap="BaseResultMap">
-    SELECT * from logs WHERE 1=1 AND
-    <if test="username != null">
-      and name = #{username}
+    SELECT * FROM logs where 1=1
+    <if test="name != null">
+      and name = #{name}
     </if>
     order by createdTime DESC
   </select>
@@ -110,11 +110,11 @@
   </delete>
   <insert id="insert" parameterType="com.jec.manage.bean.Logs">
     insert into logs (id, username, operation, 
-      method, params, ip, 
-      createdTime)
+      params, createdTime, atmType, 
+      typeone)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, 
-      #{method,jdbcType=VARCHAR}, #{params,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
-      #{createdtime,jdbcType=TIMESTAMP})
+      #{params,jdbcType=VARCHAR}, #{createdtime,jdbcType=TIMESTAMP}, #{atmtype,jdbcType=VARCHAR}, 
+      #{typeone,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.jec.manage.bean.Logs">
     insert into logs
@@ -128,17 +128,17 @@
       <if test="operation != null">
         operation,
       </if>
-      <if test="method != null">
-        method,
-      </if>
       <if test="params != null">
         params,
       </if>
-      <if test="ip != null">
-        ip,
-      </if>
       <if test="createdtime != null">
         createdTime,
+      </if>
+      <if test="atmtype != null">
+        atmType,
+      </if>
+      <if test="typeone != null">
+        typeone,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -151,17 +151,17 @@
       <if test="operation != null">
         #{operation,jdbcType=VARCHAR},
       </if>
-      <if test="method != null">
-        #{method,jdbcType=VARCHAR},
-      </if>
       <if test="params != null">
         #{params,jdbcType=VARCHAR},
       </if>
-      <if test="ip != null">
-        #{ip,jdbcType=VARCHAR},
-      </if>
       <if test="createdtime != null">
         #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="atmtype != null">
+        #{atmtype,jdbcType=VARCHAR},
+      </if>
+      <if test="typeone != null">
+        #{typeone,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -183,17 +183,17 @@
       <if test="record.operation != null">
         operation = #{record.operation,jdbcType=VARCHAR},
       </if>
-      <if test="record.method != null">
-        method = #{record.method,jdbcType=VARCHAR},
-      </if>
       <if test="record.params != null">
         params = #{record.params,jdbcType=VARCHAR},
       </if>
-      <if test="record.ip != null">
-        ip = #{record.ip,jdbcType=VARCHAR},
-      </if>
       <if test="record.createdtime != null">
         createdTime = #{record.createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.atmtype != null">
+        atmType = #{record.atmtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeone != null">
+        typeone = #{record.typeone,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -205,10 +205,10 @@
     set id = #{record.id,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       operation = #{record.operation,jdbcType=VARCHAR},
-      method = #{record.method,jdbcType=VARCHAR},
       params = #{record.params,jdbcType=VARCHAR},
-      ip = #{record.ip,jdbcType=VARCHAR},
-      createdTime = #{record.createdtime,jdbcType=TIMESTAMP}
+      createdTime = #{record.createdtime,jdbcType=TIMESTAMP},
+      atmType = #{record.atmtype,jdbcType=VARCHAR},
+      typeone = #{record.typeone,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -222,17 +222,17 @@
       <if test="operation != null">
         operation = #{operation,jdbcType=VARCHAR},
       </if>
-      <if test="method != null">
-        method = #{method,jdbcType=VARCHAR},
-      </if>
       <if test="params != null">
         params = #{params,jdbcType=VARCHAR},
       </if>
-      <if test="ip != null">
-        ip = #{ip,jdbcType=VARCHAR},
-      </if>
       <if test="createdtime != null">
         createdTime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="atmtype != null">
+        atmType = #{atmtype,jdbcType=VARCHAR},
+      </if>
+      <if test="typeone != null">
+        typeone = #{typeone,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -241,10 +241,10 @@
     update logs
     set username = #{username,jdbcType=VARCHAR},
       operation = #{operation,jdbcType=VARCHAR},
-      method = #{method,jdbcType=VARCHAR},
       params = #{params,jdbcType=VARCHAR},
-      ip = #{ip,jdbcType=VARCHAR},
-      createdTime = #{createdtime,jdbcType=TIMESTAMP}
+      createdTime = #{createdtime,jdbcType=TIMESTAMP},
+      atmType = #{atmtype,jdbcType=VARCHAR},
+      typeone = #{typeone,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

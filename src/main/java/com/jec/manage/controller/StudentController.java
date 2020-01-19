@@ -1,17 +1,13 @@
 package com.jec.manage.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.jec.manage.bean.Student;
 import com.jec.manage.service.StudentService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,15 +29,8 @@ public class StudentController {
     }
 
     @RequestMapping("/student")
-    public Map selectStudent(@Param("page") int page,@Param("rows") int rows, String name){
-        PageHelper.startPage(page,rows);
-        HashMap<Object, Object> map = new HashMap<>();
-        List<Student> rows1 = studentService.selectStudent(name);
-        //PageInfo封装了数据的所有的分页信息
-        PageInfo<Student> pageInfo = new PageInfo<Student>(rows1);
-        long total = pageInfo.getTotal();
-        map.put("total",total);
-        map.put("rows",rows1);
+    public Map selectStudent(@Param("page") Integer page,@Param("rows") Integer rows, String name){
+        Map map = studentService.selectStudent(page,rows,name);
         return map;
     }
     @RequestMapping("/classId")
@@ -50,17 +39,17 @@ public class StudentController {
     }
 
     @RequestMapping("/id")
-    public Student selectId(int id){
+    public Student selectId(Integer id){
         return studentService.selectId(id);
     }
 
     @RequestMapping("/insertStudent")
-    public int insertSelective(int id,String name, int learntime, String classid, String teachername, Date opendate){
+    public int insertSelective(Integer id,String name, int learntime, String classid, String teachername, Date opendate){
        return studentService.insertSelective(name, learntime, classid, teachername,opendate);
     }
 
     @RequestMapping("/updateinfo")
-    public Map updateinfo(int id,String name, int learntime, String classid, String teachername, Date opendate){
+    public Map updateinfo(Integer id,String name, int learntime, String classid, String teachername, Date opendate){
         Map updateinfo = studentService.updateinfo(id, name, learntime, classid, teachername, opendate);
         return updateinfo;
     }

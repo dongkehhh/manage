@@ -68,6 +68,9 @@
   <sql id="Base_Column_List">
     id, classId, teachername, teacherid
   </sql>
+  <select id="selectform" resultMap="BaseResultMap">
+    SELECT * FROM classform
+  </select>
   <select id="selectList" resultMap="BaseResultMap">
     SELECT * FROM classform where 1=1
      <if test="teachername != null">
